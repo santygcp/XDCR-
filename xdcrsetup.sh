@@ -6,6 +6,9 @@ DOCKER_EMAIL="jadejakajal13@gmail.com"
 LICENSE_FILE="/opt/voltdb/voltdb/license.xml"
 XDCR2="XDCR2.yaml"
 
+
+helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
+
 #creating a cluster
 
 gcloud beta container --project santosh-350416 clusters create xdcr1 --zone us-east4-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --disk-type "pd-standard" --disk-size "100" --num-nodes "3"
