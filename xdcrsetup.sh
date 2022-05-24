@@ -11,10 +11,10 @@ helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
 
 #creating a cluster
 
-gcloud beta container --project santosh-350416 clusters create xdcr1 --zone us-east4-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --disk-type "pd-standard" --disk-size "100" --num-nodes "3"
+gcloud beta container --project santosh-350416 clusters create xdcr --zone us-east4-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --disk-type "pd-standard" --disk-size "100" --num-nodes "3"
 
 #connecting to the cluster
-gcloud container clusters get-credentials xdcr1 --zone us-east4-a --project santosh-350416
+gcloud container clusters get-credentials xdcr --zone us-east4-a --project santosh-350416
 
 #create the secret registry
 kubectl create secret docker-registry dockerio-registry --docker-username=$DOCKER_ID --docker-email=$DOCKER_EMAIL --docker-password=$DOCKER_API
