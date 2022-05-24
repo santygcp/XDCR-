@@ -11,13 +11,13 @@ XDCR="XDCR2.yaml"
 
 #creating a cluster
 
-gcloud beta container --project santosh-350416 clusters create xdcr1 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --disk-type "pd-standard" --disk-size "100" --num-nodes "3"
+#gcloud beta container --project santosh-350416 clusters create xdcr1 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --disk-type "pd-standard" --disk-size "100" --num-nodes "3"
 
 #connecting to the cluster
-gcloud container clusters get-credentials xdcr1 --zone us-central1-a --project santosh-350416
+#gcloud container clusters get-credentials xdcr1 --zone us-central1-a --project santosh-350416
 
 #create the secret registry
-kubectl create secret docker-registry dockerio-registry --docker-username=$DOCKER_ID --docker-email=$DOCKER_EMAIL --docker-password=$DOCKER_API
+#kubectl create secret docker-registry dockerio-registry --docker-username=$DOCKER_ID --docker-email=$DOCKER_EMAIL --docker-password=$DOCKER_API
 
 
 helm install xdcr1 santy/voltdb --set cluster.clusterSpec.replicas=3 --set cluster.config.deployment.cluster.kfactor=1 --set-file cluster.config.licenseXMLFile=$LICENSE_FILE  -f $XDCR
