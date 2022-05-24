@@ -33,8 +33,8 @@ kubectl get svc  | grep http |awk -F " " {'print $5'}
 #echo "grafana Port for UI access"
 
 kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
-kubectl exec -it xdcr-voltdb-cluster-0 -- sqlcmd < opt/voltdb/ddl.sql
-
+#kubectl exec -it xdcr-voltdb-cluster-0 -- sqlcmd < opt/voltdb/ddl.sql
+sqlcmd < opt/voltdb/ddl.sql
 
 
 
