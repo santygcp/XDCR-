@@ -20,9 +20,9 @@ XDCR="XDCR2.yaml"
 #kubectl create secret docker-registry dockerio-registry --docker-username=$DOCKER_ID --docker-email=$DOCKER_EMAIL --docker-password=$DOCKER_API
 
 
-helm install xdcr1 santy/voltdb --set cluster.clusterSpec.replicas=3 --set cluster.config.deployment.cluster.kfactor=1 --set-file cluster.config.licenseXMLFile=$LICENSE_FILE  -f $XDCR
+#helm install xdcr1 santy/voltdb --set cluster.clusterSpec.replicas=3 --set cluster.config.deployment.cluster.kfactor=1 --set-file cluster.config.licenseXMLFile=$LICENSE_FILE  -f $XDCR
 
-sleep 360
+#sleep 360
 
 #kubectl port-forward xdcr-voltdb-cluster-0 8080 21212
 
@@ -35,9 +35,9 @@ sleep 360
 kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
 
 #working
-#kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
-#kubectl exec -it xdcr1-voltdb-cluster-0 -- sqlcmd < voter/ddl.sql
-#kubectl exec -it xdcr1-voltdb-cluster-0 -- voter/run.sh client
+kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
+kubectl exec -it xdcr1-voltdb-cluster-0 -- bash < voter/ddl.sql
+kubectl exec -it xdcr1-voltdb-cluster-0 -- voter/run.sh client
 
 
 
