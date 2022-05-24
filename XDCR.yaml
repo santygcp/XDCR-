@@ -10,7 +10,7 @@ cluster:
   config:
     deployment:
       dr:
-        id: 2
+        id: 1
         role: xdcr
         connection:
           enabled: true
