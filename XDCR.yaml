@@ -33,4 +33,3 @@ operator:
     limits:
       memory: "256Mi"
       cpu: ".5"
-
