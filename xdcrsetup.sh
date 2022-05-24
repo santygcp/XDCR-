@@ -4,7 +4,7 @@ DOCKER_ID="jadejakajal13"
 DOCKER_API="b461d1b4-82c4-499e-afc0-f17943a16411"
 DOCKER_EMAIL="jadejakajal13@gmail.com"
 LICENSE_FILE="/opt/voltdb/voltdb/license.xml"
-XDCR2="XDCR2.yaml"
+XDCR="XDCR.yaml"
 
 
 helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
