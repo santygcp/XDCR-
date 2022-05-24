@@ -26,13 +26,13 @@ sleep 360
 
 #kubectl port-forward xdcr1-voltdb-cluster-0 8080 21212
 
-kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' > temp
-
-cat temp
-
 kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
 echo "VolTB Port for UI access"
 
 kubectl get svc  | grep http |awk -F " " {'print $5'}
 echo "grafana Port for UI access"
+
+kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+
+
 
