@@ -10,7 +10,7 @@ cluster:
   config:
     deployment:
       dr:
-        id: 1
+        id: 2
         role: xdcr
         connection:
           enabled: true
@@ -19,7 +19,6 @@ cluster:
         enabled: true
 ## Define the load balancer for Network Discovery
   serviceSpec:
-    type: NodePort
     perpod:
       type: LoadBalancer
       publicIPFromService: true
@@ -34,4 +33,3 @@ operator:
     limits:
       memory: "256Mi"
       cpu: ".5"
-
