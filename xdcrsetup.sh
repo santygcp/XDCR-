@@ -36,7 +36,7 @@ kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }'
 
 #working
 
-kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
+kubectl cp voter  xdcr1-voltdb-cluster-0:/tmp/ 
 kubectl exec -it xdcr1-voltdb-cluster-0 -- sqlcmd < voter/ddl.sql
 kubectl cp voter/run.sh  xdcr1-voltdb-cluster-0:/tmp/
 kubectl exec -it xdcr1-voltdb-cluster-0 -- /tmp/run.sh client
