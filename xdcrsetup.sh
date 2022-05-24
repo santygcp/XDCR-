@@ -3,7 +3,7 @@
 DOCKER_ID="jadejakajal13"
 DOCKER_API="b461d1b4-82c4-499e-afc0-f17943a16411"
 DOCKER_EMAIL="jadejakajal13@gmail.com"
-LICENSE_FILE="/opt/voltdb/voltdb/license.xml"
+LICENSE_FILE="license.xml"
 XDCR="XDCR2.yaml"
 
 
@@ -37,8 +37,8 @@ kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }'
 #working
 kubectl cp license xdcr1-voltdb-cluster-0:/tmp/ 
 kubectl cp voter  xdcr1-voltdb-cluster-0:/tmp/ 
-kubectl exec -it xdcr1-voltdb-cluster-0 -- sqlcmd < /tmp/voter/ddl.sql
-kubectl exec -it xdcr1-voltdb-cluster-0 -- /tmp/voter/run.sh
+kubectl exec -it xdcr1-voltdb-cluster-0 --license=$LICENSE_FILE -- sqlcmd < /tmp/voter/ddl.sql
+kubectl exec -it xdcr1-voltdb-cluster-0 --license=$LICENSE_FILE -- /tmp/voter/run.sh
 
 
 
