@@ -33,8 +33,10 @@ kubectl get svc  | grep http |awk -F " " {'print $5'}
 #echo "grafana Port for UI access"
 
 kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
-#kubectl exec -it xdcr-voltdb-cluster-0 -- sqlcmd < opt/voltdb/ddl.sql
-sqlcmd < voter/ddl.sql
+
+kubectl cp voter/voter-procs.jar  xdcr-voltdb-cluster-0:/tmp/ 
+kubectl exec -it xdcr-voltdb-cluster-0 -- sqlcmd < voter/ddl.sql
+
 
 
 
