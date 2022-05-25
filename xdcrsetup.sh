@@ -44,8 +44,8 @@ kubectl cp voter/voter-client.jar  xdcr1-voltdb-cluster-0:/tmp/
 kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
 kubectl cp voter/run.sh  xdcr1-voltdb-cluster-0:/tmp/
 kubectl exec -it xdcr1-voltdb-cluster-0 -- sqlcmd < voter/ddl.sql
-kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/voter/run.sh init"
-kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/voter/run.sh client"
+kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/tmp/run.sh init"
+kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/tmp/run.sh client"
 #kubectl cp voter  xdcr1-voltdb-cluster-0:/etc/
 
 
