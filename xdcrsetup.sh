@@ -48,6 +48,8 @@ kubectl exec -it voter -- sqlcmd < voter/ddl.sql
 #kubectl exec -it xdcr1-voltdb-cluster-0 -- voter/run.sh client
 #kubectl cp voter  xdcr1-voltdb-cluster-0:/etc/
 
+export PATH="/opt/voltdb-ent-11.4.0.preview1/bin/:$PATH"
+
 
 
 
