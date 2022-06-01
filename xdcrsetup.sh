@@ -30,25 +30,24 @@ echo "IP for volt UI access"
 
 kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
 
-#echo "VolTB Port for UI access"
+echo "VolTB Port for UI access"
 
-#kubectl get svc  | grep http |awk -F " " {'print $5'}
+kubectl get svc  | grep http |awk -F " " {'print $5'}
 
-#echo " external load balancer ip"
+echo " external load balancer ip"
 
-#kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
 
-#working
+kubectl create -f votertest.yaml
 
-#kubectl cp voter/*/  xdcr1-voltdb-cluster-0:/dev/ 
-#kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
-#kubectl cp voter/run.sh  xdcr1-voltdb-cluster-0:/tmp/
-#kubectl exec -it voter -- sqlcmd < voter/ddl.sql
-#kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/tmp/run.sh init"
-#kubectl exec -it xdcr1-voltdb-cluster-0 -- voter/run.sh client
-#kubectl cp voter  xdcr1-voltdb-cluster-0:/etc/
+sleep 180
 
-#export PATH="/opt/voltdb-ent-11.4.0.preview1/bin/:$PATH"
+kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
+kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
+kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
+
+
+
 
 
 
