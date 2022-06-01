@@ -48,11 +48,12 @@ kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
 kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 
-STATUS=$?
-if [ $STATUS -eq 127 ]
-then
-echo " client job is completed"
+# will fail for error codes == 1
+rretVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "all job's completed"
 fi
+exit $retVal
 
 
 
