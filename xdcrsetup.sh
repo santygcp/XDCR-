@@ -38,13 +38,13 @@ echo " external load balancer ip"
 
 kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
 
-kubectl create -f votertest.yaml
+#kubectl create -f votertest.yaml
 
 sleep 180
 
-kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
-kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
-kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
+#kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
+#kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
+#kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
 
 
 
