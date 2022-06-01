@@ -24,8 +24,6 @@ helm install xdcr1 santy/voltdb --set cluster.clusterSpec.replicas=3 --set clust
 
 sleep 360
 
-# kubectl port-forward xdcr-voltdb-cluster-0  21212
-
 echo "IP for volt UI access"
 
 kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
@@ -38,13 +36,17 @@ echo " external load balancer ip"
 
 kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
 
-#kubectl create -f votertest.yaml
+kubectl create -f votertest.yaml
 
 sleep 180
 
 #kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
+
+
+kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
+kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 
 
 
