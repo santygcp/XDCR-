@@ -28,7 +28,7 @@ sleep 360
 
 echo "IP for volt UI access"
 
-#kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
+kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
 
 #echo "VolTB Port for UI access"
 
@@ -41,14 +41,14 @@ echo "IP for volt UI access"
 #working
 
 #kubectl cp voter/*/  xdcr1-voltdb-cluster-0:/dev/ 
-kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
+#kubectl cp voter/voter-procs.jar  xdcr1-voltdb-cluster-0:/tmp/ 
 #kubectl cp voter/run.sh  xdcr1-voltdb-cluster-0:/tmp/
-kubectl exec -it voter -- sqlcmd < voter/ddl.sql
+#kubectl exec -it voter -- sqlcmd < voter/ddl.sql
 #kubectl exec -it xdcr1-voltdb-cluster-0 -- /bin/bash -c "/tmp/run.sh init"
 #kubectl exec -it xdcr1-voltdb-cluster-0 -- voter/run.sh client
 #kubectl cp voter  xdcr1-voltdb-cluster-0:/etc/
 
-export PATH="/opt/voltdb-ent-11.4.0.preview1/bin/:$PATH"
+#export PATH="/opt/voltdb-ent-11.4.0.preview1/bin/:$PATH"
 
 
 
