@@ -40,7 +40,7 @@ kubectl create -f votertest.yaml
 
 sleep 180
 
-#kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
+kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
 
