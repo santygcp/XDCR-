@@ -48,11 +48,11 @@ helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
 kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 
-#retVal=$?
-#if [ $retVal -ne 0 ]; then
-#    echo "all job's completed"
-#fi
-#exit $retVal
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "all job's completed"
+fi
+
 
 
 
