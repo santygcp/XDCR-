@@ -98,17 +98,17 @@ kubectl get svc  | grep http |awk -F " " {'print $5'}
 
 gcloud container clusters get-credentials xdcr1 --zone us-central1-a --project fourth-epigram-293718
 
-N=kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+var=`kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }'`
 
-helm upgrade xdcr1 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$N
+helm upgrade xdcr1 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$var
 
 
 gcloud container clusters get-credentials xdcr2 --zone us-central1-a --project fourth-epigram-293718
 
 
-L=kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+var2=`kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }'`
 
-helm upgrade xdcr2 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$L
+helm upgrade xdcr2 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$var2
 
 
 
