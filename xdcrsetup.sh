@@ -41,6 +41,7 @@ kubectl create -f votertest.yaml
 sleep 180
 
 kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
+kubectl cp ddl.sql  votertestfinal:/opt/voltdb/voter/ddl.sql/
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init"
 #kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh client"
 
@@ -69,11 +70,41 @@ helm install xdcr2 santy/voltdb --set cluster.clusterSpec.replicas=3 --set clust
 
 sleep 360
 
+kubectl cp ddl.sql  votertestfinal:/opt/voltdb/voter/ddl.sql/
 kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
 
 sleep 180
 
 kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
+
+retVal=$?
+if [ $retVal -ne 0 ]; then
+    echo "all job's completed"
+fi
+
+echo "IP for volt UI access"
+
+kubectl get nodes -o wide | tail -1 | awk -F " " {'print $7'}
+
+echo "VolTB Port for UI access"
+
+kubectl get svc  | grep http |awk -F " " {'print $5'}
+
+
+gcloud container clusters get-credentials xdcr1 --zone us-west1-a --project santosh-350416
+
+N=kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+
+helm upgrade xdcr1 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$N
+
+
+gcloud container clusters get-credentials xdcr2 --zone us-west1-a --project santosh-350416
+
+
+L=kubectl get all | grep LoadBalancer | sed -n '1,1p' |awk '{ print $4 }' 
+
+helm upgrade xdcr2 santy/voltdb --reuse-values --set cluster.config.deployment.dr.connection.source=$L
+
 
 
 
