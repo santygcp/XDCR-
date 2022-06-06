@@ -19,6 +19,8 @@ cluster:
         enabled: true
 ## Define the load balancer for Network Discovery
   serviceSpec:
+    type: NodePort
+    clientPort: 21212
     perpod:
       type: LoadBalancer
       publicIPFromService: true
