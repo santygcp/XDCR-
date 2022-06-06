@@ -8,7 +8,7 @@ metadata:
 spec:       
   containers:       
     - name: client        
-      image: gcr.io/santosh-350416/voltdb-source:test2
+      image: gcr.io/santosh-350416/voltdb-source:volt-client
       command: ["/bin/sh", "-ec", "sleep 3000000"]    
       
   
