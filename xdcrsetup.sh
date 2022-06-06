@@ -69,13 +69,16 @@ kubectl create secret docker-registry dockerio-registry --docker-username=$DOCKE
 helm install xdcr2 santy/voltdb --set cluster.clusterSpec.replicas=3 --set cluster.config.deployment.cluster.kfactor=1 --set-file cluster.config.licenseXMLFile=$LICENSE_FILE  -f $XDCR
 
 sleep 360
+kubectl create -f votertest2.yaml
 
-kubectl cp ddl.sql  votertestfinal:/opt/voltdb/voter/ddl.sql/
-kubectl cp run.sh votertestfinal:/opt/voltdb/voter/run.sh/
+
 
 sleep 180
 
-kubectl exec -it votertestfinal -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
+kubectl cp ddl.sql  votertestfinal2:/opt/voltdb/voter/ddl.sql/
+kubectl cp run.sh votertestfinal2:/opt/voltdb/voter/run.sh/
+
+kubectl exec -it votertestfinal2 -- /bin/bash -c "cd /opt/voltdb/voter/ ; ./run.sh init xdcr1-voltdb-cluster-client.default.svc.cluster.local"
 
 retVal=$?
 if [ $retVal -ne 0 ]; then
