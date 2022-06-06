@@ -11,7 +11,7 @@ helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
 
 #creating a cluster
 
-gcloud beta container --project santosh-350416  clusters create xdcr1 --zone us-west1-a --no-enable-basic-auth --cluster-version "1.22.6-gke.300" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
+gcloud beta container --project santosh-350416  clusters create xdcr1 --zone us-west1-a --no-enable-basic-auth --cluster-version "1.22.8-gke.201" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
 
 #connecting to the cluster
 gcloud container clusters get-credentials xdcr1 --zone us-west1-a --project santosh-350416
