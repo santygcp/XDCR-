@@ -11,7 +11,10 @@ helm repo add santy https://voltdb-kubernetes-charts.storage.googleapis.com
 
 #creating a cluster
 
-gcloud beta container --project fourth-epigram-293718  clusters create xdcr1 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.8-gke.201" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
+gcloud container clusters create  --machine-type "c2-standard-8" --image-type UBUNTU_CONTAINERD  --num-nodes 5    xdcr1 --disk-type "pd-ssd" --disk-size "300" --zone "us-central1-a"
+
+
+#gcloud beta container --project fourth-epigram-293718  clusters create xdcr1 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.8-gke.201" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
 
 #connecting to the cluster
 gcloud container clusters get-credentials xdcr1 --zone us-central1-a --project fourth-epigram-293718
@@ -60,7 +63,8 @@ DOCKER_EMAIL="jadejakajal13@gmail.com"
 LICENSE_FILE="license.xml"
 XDCR="XDCR.yaml"
 
-gcloud beta container --project fourth-epigram-293718  clusters create xdcr2 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.8-gke.201" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
+#gcloud beta container --project fourth-epigram-293718  clusters create xdcr2 --zone us-central1-a --no-enable-basic-auth --cluster-version "1.22.8-gke.201" --machine-type "n2-standard-2" --num-nodes 5 --disk-type "pd-standard" --disk-size "100"
+gcloud container clusters create  --machine-type "c2-standard-8" --image-type UBUNTU_CONTAINERD  --num-nodes 5    xdcr2 --disk-type "pd-ssd" --disk-size "300" --zone "us-central1-a"
 
 gcloud container clusters get-credentials xdcr2 --zone us-central1-a --project fourth-epigram-293718
 
